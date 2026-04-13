@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/logo/skygo.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&family=DM+Sans:wght@300;500;600;700&family=Poppins:wght@600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./styles.css">
+  <title>SkyGo - Weather Forecast</title>
+</head>
+<body>
+  <div class="container">
+    <!-- Header with Units Toggle -->
+    <header class="header">
+      <div class="logo">
+        <img style="border-radius: 30px;" src="./assets/images/logo/skygo.png" alt="SkyGo">
+        <span>SkyGo</span>
+      </div>
+      <div class="header-controls">
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark/light theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <div class="units-selector">
+        <button class="units-btn">
+          <img src="./assets/images/icon-units.svg" alt="Units">
+          Units
+          <img src="./assets/images/icon-dropdown.svg" alt="Dropdown" class="dropdown-icon">
+        </button>
+        <div class="units-menu hidden">
+          <div class="menu-section">
+            <h4>Temperature</h4>
+            <label>
+              <input type="radio" name="temperature" value="celsius" checked>
+              Celsius (°C)
+            </label>
+            <label>
+              <input type="radio" name="temperature" value="fahrenheit">
+              Fahrenheit (°F)
+            </label>
+          </div>
+          <div class="menu-section">
+            <h4>Wind Speed</h4>
+            <label>
+              <input type="radio" name="windSpeed" value="kmh" checked>
+              km/h
+            </label>
+            <label>
+              <input type="radio" name="windSpeed" value="mph">
+              mph
+            </label>
+          </div>
+          <div class="menu-section">
+            <h4>Precipitation</h4>
+            <label>
+              <input type="radio" name="precipitation" value="mm" checked>
+              Millimeters (mm)
+            </label>
+            <label>
+              <input type="radio" name="precipitation" value="in">
+              Inches (in)
+            </label>
+          </div>
+        </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Search Section -->
+      <section class="search-section">
+        <h2>How's the sky looking today?</h2>
+        <div class="search-box">
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search for a place..."
+            class="search-input"
+          >
+          <button class="search-btn">
+            <img src="./assets/images/icon-search.svg" alt="Search">
+            Search
+          </button>
+        </div>
+        <div id="searchResults" class="search-results hidden"></div>
+      </section>
+
+      <!-- Weather Display -->
+      <div id="weatherContainer" class="weather-display">
+        <!-- Current Weather Card -->
+        <div class="current-weather-card">
+          <div id="currentWeatherContent" class="loading">
+            <img src="./assets/images/icon-loading.svg" alt="Loading">
+            <p>Loading...</p>
+          </div>
+        </div>
+
+        <!-- Weather Details Grid -->
+        <div class="weather-details-grid">
+          <div class="detail-card">
+            <div class="detail-header">
+              <h3>Feels Like</h3>
+              <span class="detail-icon">🌡️</span>
+            </div>
+            <p id="feelsLike">—</p>
+          </div>
+          <div class="detail-card">
+            <div class="detail-header">
+              <h3>Humidity</h3>
+              <span class="detail-icon">💧</span>
+            </div>
+            <p id="humidity">—</p>
+          </div>
+          <div class="detail-card">
+            <div class="detail-header">
+              <h3>Wind</h3>
+              <span class="detail-icon">💨</span>
+            </div>
+            <p id="wind">—</p>
+          </div>
+          <div class="detail-card">
+            <div class="detail-header">
+              <h3>Precipitation</h3>
+              <span class="detail-icon">🌧️</span>
+            </div>
+            <p id="precipitation">—</p>
+          </div>
+        </div>
+
+        <!-- Daily Forecast -->
+        <section class="forecast-section">
+          <h3>Daily forecast</h3>
+          <div id="dailyForecast" class="daily-forecast">
+            <!-- Forecast cards will be populated by JS -->
+          </div>
+        </section>
+
+        <!-- Hourly Forecast -->
+        <section class="forecast-section">
+          <div class="hourly-header">
+            <h3>Hourly forecast</h3>
+            <select id="daySelector" class="day-selector">
+              <option value="">Today</option>
+            </select>
+          </div>
+          <div id="hourlyForecast" class="hourly-forecast">
+            <!-- Hourly cards will be populated by JS -->
+          </div>
+        </section>
+      </div>
+
+      <!-- Error State -->
+      <div id="errorContainer" class="error-container hidden">
+        <img src="./assets/images/icon-error.svg" alt="Error">
+        <h2>Something went wrong</h2>
+        <p id="errorMessage">We couldn't connect to the server (API error). Please try again in a few moments.</p>
+        <button id="retryBtn" class="retry-btn">
+          <img src="./assets/images/icon-retry.svg" alt="Retry">
+          Retry
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <p class="footer-title">SkyGo</p>
+        <p class="footer-tagline">Weather Forecast App ✨</p>
+      </div>
+      <div class="footer-credits">
+        <p><strong>© 2026</strong> SkyGo Premium</p>
+        <p>Crafted by <strong>Kemal Atayev</strong></p>
+        <p><em>«Kemalstudio»</em></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
+</body>
+</html>
