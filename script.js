@@ -140,8 +140,11 @@ function updateThemeIcon(isDarkTheme) {
 }
 
 function toggleUnitsMenu() {
-  unitsMenu.classList.toggle('hidden');
+  const isHidden = unitsMenu.classList.toggle('hidden');
   unitsBtn.classList.toggle('active');
+  // Update ARIA attributes for accessibility
+  unitsBtn.setAttribute('aria-expanded', !isHidden);
+  unitsMenu.setAttribute('aria-hidden', isHidden);
 }
 
 function closeUnitsMenuOnClickOutside(e) {
