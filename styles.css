@@ -56,6 +56,19 @@ body.light-theme {
   box-sizing: border-box;
 }
 
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 html,
 body {
   width: 100%;
@@ -155,6 +168,7 @@ p {
 .logo img {
   width: 40px;
   height: 40px;
+  object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   animation: float 3s ease-in-out infinite;
 }
@@ -215,6 +229,12 @@ p {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.units-btn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
 }
 
 .units-btn:hover {
@@ -383,6 +403,12 @@ p {
   box-shadow: 0 4px 14px rgba(51, 133, 255, 0.4);
 }
 
+.search-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
 .search-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(51, 133, 255, 0.6);
@@ -505,6 +531,7 @@ body.light-theme .current-weather-card {
 .current-weather-icon {
   width: 120px;
   height: 120px;
+  object-fit: contain;
   flex-shrink: 0;
   filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.3));
   animation: float 3s ease-in-out infinite;
@@ -551,6 +578,7 @@ body.light-theme .current-weather-card {
 .loading img {
   width: 48px;
   height: 48px;
+  object-fit: contain;
   animation: spin 2s linear infinite;
 }
 
@@ -760,6 +788,7 @@ body.light-theme .current-weather-card {
 .daily-icon {
   width: 48px;
   height: 48px;
+  object-fit: contain;
   animation: float 2s ease-in-out infinite;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
@@ -878,6 +907,7 @@ body.light-theme .current-weather-card {
 .hourly-icon {
   width: 36px;
   height: 36px;
+  object-fit: contain;
 }
 
 .hourly-temp {
@@ -904,6 +934,7 @@ body.light-theme .current-weather-card {
 .error-container img {
   width: 64px;
   height: 64px;
+  object-fit: contain;
 }
 
 .error-container h2 {
@@ -935,6 +966,12 @@ body.light-theme .current-weather-card {
   transition: all 0.3s ease;
 }
 
+.retry-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
 .retry-btn:hover {
   background: hsl(28, 100%, 58%);
   transform: translateY(-2px);
@@ -945,6 +982,28 @@ body.light-theme .current-weather-card {
 @media (max-width: 1024px) {
   .container {
     padding: 1.5rem;
+  }
+
+  .weather-details-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .daily-forecast {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .weather-details-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .daily-forecast {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 1rem;
   }
 }
 
@@ -989,14 +1048,29 @@ body.light-theme .current-weather-card {
   .current-weather-icon {
     width: 80px;
     height: 80px;
+    object-fit: contain;
   }
 
   .daily-forecast {
     grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .daily-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
   }
 
   .hourly-forecast {
     grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .hourly-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
   }
 
   .forecast-section {
@@ -1029,6 +1103,7 @@ body.light-theme .current-weather-card {
   .logo img {
     width: 28px;
     height: 28px;
+    object-fit: contain;
   }
 
   .units-btn {
@@ -1058,6 +1133,7 @@ body.light-theme .current-weather-card {
   .current-weather-icon {
     width: 60px;
     height: 60px;
+    object-fit: contain;
   }
 
   .current-location {
@@ -1107,6 +1183,7 @@ body.light-theme .current-weather-card {
   .daily-icon {
     width: 36px;
     height: 36px;
+    object-fit: contain;
   }
 
   .daily-temps {
@@ -1130,6 +1207,7 @@ body.light-theme .current-weather-card {
   .hourly-icon {
     width: 32px;
     height: 32px;
+    object-fit: contain;
   }
 
   .hourly-temp {
@@ -1147,6 +1225,12 @@ body.light-theme .current-weather-card {
 
   .error-container p {
     font-size: 0.9rem;
+  }
+
+  .error-container img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
   }
 }
 
