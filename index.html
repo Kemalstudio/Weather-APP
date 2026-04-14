@@ -31,7 +31,7 @@
           Units
           <img src="./assets/images/icon-dropdown.svg" alt="" class="dropdown-icon">
         </button>
-        <div class="units-menu hidden" id="unitsMenu" role="menu" aria-hidden="true">
+        <div class="units-menu hidden" id="unitsMenu" role="dialog" aria-label="Unit preferences" aria-hidden="true">
           <div class="menu-section">
             <h4>Temperature</h4>
             <label>
@@ -154,7 +154,7 @@
               <option value="">Today</option>
             </select>
           </div>
-          <div id="hourlyForecast" class="hourly-forecast" role="region" aria-label="Hourly weather forecast" tabindex="0">
+          <div id="hourlyForecast" class="hourly-forecast" aria-label="Hourly weather forecast">
             <!-- Hourly cards will be populated by JS -->
           </div>
         </section>
