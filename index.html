@@ -26,12 +26,12 @@
           <span class="theme-icon">🌙</span>
         </button>
         <div class="units-selector">
-        <button class="units-btn">
-          <img src="./assets/images/icon-units.svg" alt="Units">
+        <button class="units-btn" aria-expanded="false" aria-controls="unitsMenu">
+          <img src="./assets/images/icon-units.svg" alt="">
           Units
-          <img src="./assets/images/icon-dropdown.svg" alt="Dropdown" class="dropdown-icon">
+          <img src="./assets/images/icon-dropdown.svg" alt="" class="dropdown-icon">
         </button>
-        <div class="units-menu hidden">
+        <div class="units-menu hidden" id="unitsMenu" role="menu" aria-hidden="true">
           <div class="menu-section">
             <h4>Temperature</h4>
             <label>
@@ -72,18 +72,23 @@
 
     <!-- Main Content -->
     <main class="main-content">
+      <!-- Accessibility: Main page heading -->
+      <h1 class="sr-only">SkyGo Weather Forecast Application</h1>
+      
       <!-- Search Section -->
       <section class="search-section">
         <h2>How's the sky looking today?</h2>
         <div class="search-box">
+          <label for="searchInput" class="sr-only">Search for a place</label>
           <input 
             type="text" 
             id="searchInput" 
             placeholder="Search for a place..."
             class="search-input"
+            aria-label="Search for a place"
           >
-          <button class="search-btn">
-            <img src="./assets/images/icon-search.svg" alt="Search">
+          <button class="search-btn" aria-label="Search for weather">
+            <img src="./assets/images/icon-search.svg" alt="">
             Search
           </button>
         </div>
@@ -144,11 +149,12 @@
         <section class="forecast-section">
           <div class="hourly-header">
             <h3>Hourly forecast</h3>
-            <select id="daySelector" class="day-selector">
+            <label for="daySelector" class="sr-only">Select day for hourly forecast</label>
+            <select id="daySelector" class="day-selector" aria-label="Select day for hourly forecast">
               <option value="">Today</option>
             </select>
           </div>
-          <div id="hourlyForecast" class="hourly-forecast">
+          <div id="hourlyForecast" class="hourly-forecast" role="region" aria-label="Hourly weather forecast" tabindex="0">
             <!-- Hourly cards will be populated by JS -->
           </div>
         </section>
@@ -183,7 +189,5 @@
   </footer>
 
   <script src="./script.js"></script>
-</body>
-</html>
 </body>
 </html>
